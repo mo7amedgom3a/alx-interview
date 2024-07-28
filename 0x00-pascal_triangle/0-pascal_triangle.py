@@ -1,22 +1,23 @@
-
 #!/usr/bin/python3
 """A script to determine pascal's triangle for any number"""
-
-from math import factorial
-def NCR(n, r):
-    return factorial(n) // (factorial(r) * factorial(n - r))
 
 
 def pascal_triangle(n):
     """
-    Returns a list of lists of integers representing the Pascal’s triangle of n
+    returns a list of lists of integers representing the Pascal’s triangle of n
     """
-    if n <= 0:
-        return []
     triangle = []
+
+    if n <= 0:
+        return triangle
     for i in range(n):
-        row = []
-        for j in range(i + 1):
-            row.append(NCR(i, j))
-        triangle.append(row)
+        temp_list = []
+
+        for j in range(i+1):
+            if j == 0 or j == i:
+                temp_list.append(1)
+            else:
+                temp_list.append(triangle[i-1][j-1] + triangle[i-1][j])
+        triangle.append(temp_list)
+
     return triangle
