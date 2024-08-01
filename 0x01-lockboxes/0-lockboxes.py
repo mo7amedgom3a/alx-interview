@@ -2,18 +2,12 @@ def canUnlockAll(boxes):
     """Determines if all the boxes can be opened."""
     if not boxes:
         return False
-    
-    n = len(boxes)
-    opened = [False] * n
-    opened[0] = True
-
-    # Use a queue to explore boxes
-    queue = [0]
-
-    while queue:
-        current_box = queue.pop(0)
-        for key in boxes[current_box]:
-            if key < n and not opened[key]:
-                opened[key] = True
-                queue.append(key)
-    return all(opened)
+    box_count = len(boxes)
+    if box_count == 1:
+        return True
+    keys = [0]
+    for key in keys:
+        for box in boxes[key]:
+            if box < box_count and box not in keys:
+                keys.append(box)
+    return len(keys) == box_count
