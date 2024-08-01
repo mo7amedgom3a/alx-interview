@@ -3,6 +3,7 @@
 open other lockboxes
 """
 
+
 def canUnlockAll(boxes):
     """Determines if all the boxes can be opened."""
     if not boxes:
